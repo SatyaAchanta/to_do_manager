@@ -7,4 +7,8 @@ class TaskController extends GetxController {
   void addTask(Task task) {
     allTasks.add(task);
   }
+
+  List<Task> get tasks {
+    return allTasks;
+  }
 }

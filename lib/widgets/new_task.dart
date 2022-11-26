@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:to_do_manager/models/task.dart';
 import '../controllers/task_controller.dart';
 
 // Define a custom Form widget.
@@ -78,11 +79,8 @@ class NewTaskState extends State<NewTask> {
                   if (_formKey.currentState!.validate()) {
                     // If the form is valid, display a snackbar. In the real world,
                     // you'd often call a server or save the information in a database.
-                    Get.snackbar(
-                      "Go to you Tasks",
-                      "",
-                      snackPosition: SnackPosition.BOTTOM,
-                    );
+                    controller.addTask(Task("sample", "sample", false, []));
+                    Get.toNamed("/");
                   }
                 },
                 child: const Text('Add Task'),
