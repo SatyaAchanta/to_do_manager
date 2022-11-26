@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:to_do_manager/models/task.dart';
+import 'package:uuid/uuid.dart';
+import '../models/task.dart';
 
 class TaskController extends GetxController {
   final allTasks = <Task>[].obs;
@@ -10,5 +11,14 @@ class TaskController extends GetxController {
 
   List<Task> get tasks {
     return allTasks;
+  }
+
+  setTaskDone(Uuid taskId) {
+    allTasks.firstWhere((element) => element.taskId == taskId).isCompleted =
+        true;
+  }
+
+  deleteTask(Uuid taskId) {
+    allTasks.removeWhere((element) => element.taskId == taskId);
   }
 }
