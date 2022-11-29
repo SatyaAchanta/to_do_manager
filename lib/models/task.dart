@@ -1,7 +1,9 @@
+import 'dart:convert';
+
 import 'package:uuid/uuid.dart';
 
 class Task {
-  Uuid taskId;
+  String taskId;
   String taskTitle;
   String taskDescription;
   List<String>? tags;

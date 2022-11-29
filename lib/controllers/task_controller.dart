@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:uuid/uuid.dart';
 import '../models/task.dart';
 
 class TaskController extends GetxController {
@@ -13,12 +12,15 @@ class TaskController extends GetxController {
     return allTasks;
   }
 
-  setTaskDone(Uuid taskId) {
-    allTasks.firstWhere((element) => element.taskId == taskId).isCompleted =
-        true;
+  setTaskDone(String taskId, bool selection) {
+    List<Task> tempTasks = [...allTasks];
+    allTasks.clear();
+    tempTasks.firstWhere((element) => element.taskId == taskId).isCompleted =
+        selection;
+    allTasks.addAll(tempTasks);
   }
 
-  deleteTask(Uuid taskId) {
+  deleteTask(String taskId) {
     allTasks.removeWhere((element) => element.taskId == taskId);
   }
 }

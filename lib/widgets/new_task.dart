@@ -86,14 +86,14 @@ class NewTaskState extends State<NewTask> {
                     // you'd often call a server or save the information in a database.
                     controller.addTask(
                       Task(
-                        const Uuid(),
+                        const Uuid().v4(),
                         taskTitleController.text,
                         taskDescriptionController.text,
                         false,
                         [],
                       ),
                     );
-                    Get.toNamed("/");
+                    Get.offAndToNamed("/");
                   }
                 },
                 child: const Text('Add Task'),
